@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionDesBascules_v22Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_vent" Type="Int32" />
+    <Property Name="poids" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="vente" Relationship="Self.FK__bon__id_vent__5FB337D6" FromRole="bon" ToRole="vente" />
+  </EntityType>
+  <EntityType Name="caisse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="mtpss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="camion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="immatriculation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="poids" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="ventes" Relationship="Self.FK__vente__id_camion__5AEE82B9" FromRole="camion" ToRole="vente" />
+  </EntityType>
+  <EntityType Name="chiffeur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="id_client" Type="Int32" />
+    <NavigationProperty Name="ventes" Relationship="Self.FK__vente__id_chiffe__5BE2A6F2" FromRole="chiffeur" ToRole="vente" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sold" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="id_chiffeur" Type="Int32" />
+    <NavigationProperty Name="ventes" Relationship="Self.FK__vente__id_client__59FA5E80" FromRole="client" ToRole="vente" />
+  </EntityType>
+  <EntityType Name="contrat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_entrepr" Type="Int32" />
+    <Property Name="date_debut" Type="DateTime" Precision="3" />
+    <Property Name="date_fine" Type="DateTime" Precision="3" />
+    <Property Name="id_entrepreneur" Type="Int32" />
+    <NavigationProperty Name="entrepreneur" Relationship="Self.FK__contrat__id_entr__5535A963" FromRole="contrat" ToRole="entrepreneur" />
+  </EntityType>
+  <EntityType Name="entrepreneur">
+    <Key>
+      <PropertyRef Name="id_contrat" />
+    </Key>
+    <Property Name="id_contrat" Type="Int32" Nullable="false" />
+    <Property Name="credit_max" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="contrats" Relationship="Self.FK__contrat__id_entr__5535A963" FromRole="entrepreneur" ToRole="contrat" />
+  </EntityType>
+  <EntityType Name="gerant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="motpass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="produit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="prix" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ventes" Relationship="Self.FK__vente__id_produi__5CD6CB2B" FromRole="produit" ToRole="vente" />
+  </EntityType>
+  <EntityType Name="vente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_client" Type="Int32" />
+    <Property Name="id_camion" Type="Int32" />
+    <Property Name="temp" Type="DateTime" Precision="3" />
+    <Property Name="tonage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tonage_net" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tonage_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="prix" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="type_produit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type_vent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_chiffeur" Type="Int32" />
+    <Property Name="mode_pay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_produit" Type="Int32" />
+    <NavigationProperty Name="bons" Relationship="Self.FK__bon__id_vent__5FB337D6" FromRole="vente" ToRole="bon" />
+    <NavigationProperty Name="camion" Relationship="Self.FK__vente__id_camion__5AEE82B9" FromRole="vente" ToRole="camion" />
+    <NavigationProperty Name="chiffeur" Relationship="Self.FK__vente__id_chiffe__5BE2A6F2" FromRole="vente" ToRole="chiffeur" />
+    <NavigationProperty Name="client" Relationship="Self.FK__vente__id_client__59FA5E80" FromRole="vente" ToRole="client" />
+    <NavigationProperty Name="produit" Relationship="Self.FK__vente__id_produi__5CD6CB2B" FromRole="vente" ToRole="produit" />
+  </EntityType>
+  <Association Name="FK__bon__id_vent__5FB337D6">
+    <End Role="vente" Type="Self.vente" Multiplicity="0..1" />
+    <End Role="bon" Type="Self.bon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bon">
+        <PropertyRef Name="id_vent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_camion__5AEE82B9">
+    <End Role="camion" Type="Self.camion" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="camion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_camion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_chiffe__5BE2A6F2">
+    <End Role="chiffeur" Type="Self.chiffeur" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chiffeur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_chiffeur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_client__59FA5E80">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__contrat__id_entr__5535A963">
+    <End Role="entrepreneur" Type="Self.entrepreneur" Multiplicity="0..1" />
+    <End Role="contrat" Type="Self.contrat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entrepreneur">
+        <PropertyRef Name="id_contrat" />
+      </Principal>
+      <Dependent Role="contrat">
+        <PropertyRef Name="id_entrepr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_produi__5CD6CB2B">
+    <End Role="produit" Type="Self.produit" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbbasculesContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="bons" EntityType="Self.bon" />
+    <EntitySet Name="caisses" EntityType="Self.caisse" />
+    <EntitySet Name="camions" EntityType="Self.camion" />
+    <EntitySet Name="chiffeurs" EntityType="Self.chiffeur" />
+    <EntitySet Name="clients" EntityType="Self.client" />
+    <EntitySet Name="contrats" EntityType="Self.contrat" />
+    <EntitySet Name="entrepreneurs" EntityType="Self.entrepreneur" />
+    <EntitySet Name="gerants" EntityType="Self.gerant" />
+    <EntitySet Name="produits" EntityType="Self.produit" />
+    <EntitySet Name="ventes" EntityType="Self.vente" />
+    <AssociationSet Name="FK__bon__id_vent__5FB337D6" Association="Self.FK__bon__id_vent__5FB337D6">
+      <End Role="vente" EntitySet="ventes" />
+      <End Role="bon" EntitySet="bons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_camion__5AEE82B9" Association="Self.FK__vente__id_camion__5AEE82B9">
+      <End Role="camion" EntitySet="camions" />
+      <End Role="vente" EntitySet="ventes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_chiffe__5BE2A6F2" Association="Self.FK__vente__id_chiffe__5BE2A6F2">
+      <End Role="chiffeur" EntitySet="chiffeurs" />
+      <End Role="vente" EntitySet="ventes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_client__59FA5E80" Association="Self.FK__vente__id_client__59FA5E80">
+      <End Role="client" EntitySet="clients" />
+      <End Role="vente" EntitySet="ventes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__contrat__id_entr__5535A963" Association="Self.FK__contrat__id_entr__5535A963">
+      <End Role="entrepreneur" EntitySet="entrepreneurs" />
+      <End Role="contrat" EntitySet="contrats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_produi__5CD6CB2B" Association="Self.FK__vente__id_produi__5CD6CB2B">
+      <End Role="produit" EntitySet="produits" />
+      <End Role="vente" EntitySet="ventes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

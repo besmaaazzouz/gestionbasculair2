@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GestionDesBascules_v22ModelStoreContainer" CdmEntityContainer="dbbasculesContext">
+    <EntitySetMapping Name="bons">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.bon">
+        <MappingFragment StoreEntitySet="bon">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_vent" ColumnName="id_vent" />
+          <ScalarProperty Name="poids" ColumnName="poids" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="caisses">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.caisse">
+        <MappingFragment StoreEntitySet="caisse">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="mtpss" ColumnName="mtpss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="camions">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.camion">
+        <MappingFragment StoreEntitySet="camion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="immatriculation" ColumnName="immatriculation" />
+          <ScalarProperty Name="poids" ColumnName="poids" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chiffeurs">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.chiffeur">
+        <MappingFragment StoreEntitySet="chiffeur">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="sold" ColumnName="sold" />
+          <ScalarProperty Name="id_chiffeur" ColumnName="id_chiffeur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contrats">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.contrat">
+        <MappingFragment StoreEntitySet="contrat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_entrepr" ColumnName="id_entrepr" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="date_fine" ColumnName="date_fine" />
+          <ScalarProperty Name="id_entrepreneur" ColumnName="id_entrepreneur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entrepreneurs">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.entrepreneur">
+        <MappingFragment StoreEntitySet="entrepreneur">
+          <ScalarProperty Name="id_contrat" ColumnName="id_contrat" />
+          <ScalarProperty Name="credit_max" ColumnName="credit_max" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gerants">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.gerant">
+        <MappingFragment StoreEntitySet="gerant">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="motpass" ColumnName="motpass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produits">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.produit">
+        <MappingFragment StoreEntitySet="produit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventes">
+      <EntityTypeMapping TypeName="GestionDesBascules_v22Model.vente">
+        <MappingFragment StoreEntitySet="vente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_client" ColumnName="id_client" />
+          <ScalarProperty Name="id_camion" ColumnName="id_camion" />
+          <ScalarProperty Name="temp" ColumnName="temp" />
+          <ScalarProperty Name="tonage" ColumnName="tonage" />
+          <ScalarProperty Name="tonage_net" ColumnName="tonage_net" />
+          <ScalarProperty Name="tonage_total" ColumnName="tonage_total" />
+          <ScalarProperty Name="prix" ColumnName="prix" />
+          <ScalarProperty Name="type_produit" ColumnName="type_produit" />
+          <ScalarProperty Name="type_vent" ColumnName="type_vent" />
+          <ScalarProperty Name="id_chiffeur" ColumnName="id_chiffeur" />
+          <ScalarProperty Name="mode_pay" ColumnName="mode_pay" />
+          <ScalarProperty Name="id_produit" ColumnName="id_produit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

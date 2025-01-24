@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\basculeManger.exe.config
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\basculeManger.exe
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\basculeManger.pdb
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\basculeManger\basculeManger\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.Connexion.resources
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.Form1.resources
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.Properties.Resources.resources
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.csproj.GenerateResource.cache
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeM.DBBAF9D9.Up2Date
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.exe
+C:\Users\User\source\repos\basculeManger\basculeManger\obj\Debug\basculeManger.pdb

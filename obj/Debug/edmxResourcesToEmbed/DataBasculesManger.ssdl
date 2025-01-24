@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionDesBascules_v22Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_vent" Type="int" />
+    <Property Name="poids" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="caisse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="100" />
+    <Property Name="prenom" Type="nvarchar" MaxLength="100" />
+    <Property Name="mtpss" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="camion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="immatriculation" Type="nvarchar" MaxLength="50" />
+    <Property Name="poids" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="chiffeur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="100" />
+    <Property Name="id_client" Type="int" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="100" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="sold" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="id_chiffeur" Type="int" />
+  </EntityType>
+  <EntityType Name="contrat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_entrepr" Type="int" />
+    <Property Name="date_debut" Type="datetime" />
+    <Property Name="date_fine" Type="datetime" />
+    <Property Name="id_entrepreneur" Type="int" />
+  </EntityType>
+  <EntityType Name="entrepreneur">
+    <Key>
+      <PropertyRef Name="id_contrat" />
+    </Key>
+    <Property Name="id_contrat" Type="int" Nullable="false" />
+    <Property Name="credit_max" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="gerant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="tel" Type="nvarchar" MaxLength="20" />
+    <Property Name="motpass" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="produit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="100" />
+    <Property Name="prix" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="vente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_client" Type="int" />
+    <Property Name="id_camion" Type="int" />
+    <Property Name="temp" Type="datetime" />
+    <Property Name="tonage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="tonage_net" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="tonage_total" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="prix" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="type_produit" Type="nvarchar" MaxLength="50" />
+    <Property Name="type_vent" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_chiffeur" Type="int" />
+    <Property Name="mode_pay" Type="nvarchar" MaxLength="50" />
+    <Property Name="id_produit" Type="int" />
+  </EntityType>
+  <Association Name="FK__bon__id_vent__5FB337D6">
+    <End Role="vente" Type="Self.vente" Multiplicity="0..1" />
+    <End Role="bon" Type="Self.bon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="bon">
+        <PropertyRef Name="id_vent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__contrat__id_entr__5535A963">
+    <End Role="entrepreneur" Type="Self.entrepreneur" Multiplicity="0..1" />
+    <End Role="contrat" Type="Self.contrat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entrepreneur">
+        <PropertyRef Name="id_contrat" />
+      </Principal>
+      <Dependent Role="contrat">
+        <PropertyRef Name="id_entrepr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_camion__5AEE82B9">
+    <End Role="camion" Type="Self.camion" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="camion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_camion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_chiffe__5BE2A6F2">
+    <End Role="chiffeur" Type="Self.chiffeur" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chiffeur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_chiffeur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_client__59FA5E80">
+    <End Role="client" Type="Self.client" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__vente__id_produi__5CD6CB2B">
+    <End Role="produit" Type="Self.produit" Multiplicity="0..1" />
+    <End Role="vente" Type="Self.vente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="vente">
+        <PropertyRef Name="id_produit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GestionDesBascules_v22ModelStoreContainer">
+    <EntitySet Name="bon" EntityType="Self.bon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="caisse" EntityType="Self.caisse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="camion" EntityType="Self.camion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chiffeur" EntityType="Self.chiffeur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contrat" EntityType="Self.contrat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="entrepreneur" EntityType="Self.entrepreneur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gerant" EntityType="Self.gerant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="produit" EntityType="Self.produit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vente" EntityType="Self.vente" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__bon__id_vent__5FB337D6" Association="Self.FK__bon__id_vent__5FB337D6">
+      <End Role="vente" EntitySet="vente" />
+      <End Role="bon" EntitySet="bon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__contrat__id_entr__5535A963" Association="Self.FK__contrat__id_entr__5535A963">
+      <End Role="entrepreneur" EntitySet="entrepreneur" />
+      <End Role="contrat" EntitySet="contrat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_camion__5AEE82B9" Association="Self.FK__vente__id_camion__5AEE82B9">
+      <End Role="camion" EntitySet="camion" />
+      <End Role="vente" EntitySet="vente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_chiffe__5BE2A6F2" Association="Self.FK__vente__id_chiffe__5BE2A6F2">
+      <End Role="chiffeur" EntitySet="chiffeur" />
+      <End Role="vente" EntitySet="vente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_client__59FA5E80" Association="Self.FK__vente__id_client__59FA5E80">
+      <End Role="client" EntitySet="client" />
+      <End Role="vente" EntitySet="vente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vente__id_produi__5CD6CB2B" Association="Self.FK__vente__id_produi__5CD6CB2B">
+      <End Role="produit" EntitySet="produit" />
+      <End Role="vente" EntitySet="vente" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
