@@ -2,12 +2,12 @@
 {
     partial class Connexion
     {
-        private System.ComponentModel.IContainer components = null;
+       
 
         // Définir les contrôles de la page
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnquitter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox2;
@@ -27,7 +27,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnquitter = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -86,16 +86,18 @@
             // 
             this.textBox2.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(142, 181);
+            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(288, 28);
+            this.textBox2.Size = new System.Drawing.Size(288, 31);
             this.textBox2.TabIndex = 3;
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(142, 131);
+            this.textBox1.Location = new System.Drawing.Point(142, 127);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 28);
+            this.textBox1.Size = new System.Drawing.Size(288, 32);
             this.textBox1.TabIndex = 2;
             // 
             // pictureBox1
@@ -118,15 +120,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Connexion";
             // 
-            // button1
+            // btnquitter
             // 
-            this.button1.Location = new System.Drawing.Point(631, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 37);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnquitter.Location = new System.Drawing.Point(631, 14);
+            this.btnquitter.Name = "btnquitter";
+            this.btnquitter.Size = new System.Drawing.Size(38, 37);
+            this.btnquitter.TabIndex = 1;
+            this.btnquitter.Text = "X";
+            this.btnquitter.UseVisualStyleBackColor = true;
+            this.btnquitter.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -145,7 +147,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkBlue;
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnquitter);
             this.Controls.Add(this.panel1);
             this.Name = "Connexion";
             this.Size = new System.Drawing.Size(686, 496);
